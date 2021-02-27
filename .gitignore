@@ -1,4 +1,6 @@
 ## DJANGO
+static
+static-root
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

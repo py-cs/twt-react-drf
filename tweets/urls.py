@@ -1,11 +1,12 @@
 from django.contrib import admin
-from django.urls import path
-from .views import tweet_list_view, tweet_create_view, tweet_action_view, tweet_detail_view, tweet_delete_view
+from django.urls import path, include
+from .views import tweets_detail_view, tweets_profile_view, tweets_list_view, tweets_feed_view
 
 urlpatterns = [
-    path('', tweet_list_view),
-    path('create/', tweet_create_view),
-    path('action/', tweet_action_view),
-    path('<int:id>/', tweet_detail_view),
-    path('<int:id>/delete/', tweet_delete_view),
+    path('', tweets_feed_view),
+    path('all/', tweets_list_view),
+    path('api/tweets/', include('tweets.api.urls')), 
+    path('api/profile/', include('profiles.api.urls')),
+    path('<int:tweet_id>', tweets_detail_view),
+    # path('<str:username>', tweets_profile_view),
 ]
